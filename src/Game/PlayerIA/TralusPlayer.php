@@ -15,6 +15,7 @@ class TralusPlayer extends Player
     protected $mySide;
     protected $opponentSide;
     protected $result;
+    public $r = 0;
 
     public function playlast()
     {
@@ -42,13 +43,13 @@ class TralusPlayer extends Player
         return true;
     }
 
+    public function getfcked()
+    {
+        $a = $this->result->getLastScoreFor($this->mySide);
+    }
+
     public function getChoice()
     {
-        $array = $this->result->getChoicesFor($this->opponentSide);
-        $l = count($array);
-        $spam = $this->spammer($array, $l);
-        if ($l == 0 || $l == 1 || $spam == true)
-            return $this->playlast();
-        return parent::rockChoice();
+        return $this->playlast();
     }
 }
