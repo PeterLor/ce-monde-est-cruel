@@ -46,10 +46,8 @@ class TralusPlayer extends Player
     {
         $array = $this->result->getChoicesFor($this->opponentSide);
         $l = count($array);
-        if ($l == 0 || $l == 1)
-            return $this->playlast();
         $spam = $this->spammer($array, $l);
-        if ($spam == true)
+        if ($l == 0 || $l == 1 || $spam == true)
             return $this->playlast();
         return parent::rockChoice();
     }
